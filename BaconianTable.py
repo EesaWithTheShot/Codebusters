@@ -21,7 +21,7 @@ def rand_letter(switch=False):
         answer = input(f"{rand}: ")
         if answer.upper() == bacon[ind]:
             print("Correct")
-        elif answer == "exit":
+        elif answer.lower() == "exit":
             running = False
             print()
         else:
@@ -37,19 +37,19 @@ def rand_letter(switch=False):
             if answer == "I" or answer == "J":
                 print("Correct")
             else:
-                print(f"Incorrect. {answer} is {rand}")
+                print(f"Incorrect. {key} is {rand}")
         elif key == "BAABB":
             if answer == "U" or answer == "V":
                 print("Correct")
             else:
-                print(f"Incorrect. {answer} is {rand}")
-        elif answer == "exit":
+                print(f"Incorrect. {key} is {rand}")
+        elif answer == "EXIT":
             running = False
             print()
         elif rand == answer:
             print("Correct")
         elif rand != answer:
-            print(f"Incorrect. {answer} is {rand}")
+            print(f"Incorrect. {key} is {rand}")
 # MAIN
 sw = int(input("Type the number of the desired method:\n[1] Asks for letter \n[2] Asks for the cipher\n"))
 if sw == 1:
@@ -59,3 +59,4 @@ else:
 running = True
 while(running):
     rand_letter(sw)
+    
