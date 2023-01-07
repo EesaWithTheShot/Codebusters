@@ -5,9 +5,7 @@ import random
 morse_table = {}
 letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M", "N","O",
             "P","Q","R","S","T","U","V","W","X","Y","Z"]
-morse = ["AAAAA","AAAAB","AAABA","AAABB","AABAA","AABAB","AABBA","AABBB","ABAAA","ABAAA","ABAAB",
-        "ABABA","ABABB","ABBAA","ABBAB","ABBBA","ABBBB","BAAAA","BAAAB","BAABA","BAABB","BAABB","BABAA",
-        "BABAB","BABBA","BABBB"]
+morse = []
 #putting the two lists into a dictionary
 for i in range(len(letters)):
     morse_table[letters[i]] = morse[i]
@@ -18,14 +16,16 @@ def rand_letter(switch=False):
     if not switch:
         rand = random.choice(letters)
         ind = letters.index(rand)
+        key = morse[ind]
         answer = input(f"{rand}: ")
-        if answer.upper() == morse[ind]:
+        answer.replace(" ", "")
+        if answer == key:
             print("Correct")
         elif answer.lower() == "exit":
             running = False
             print()
         else:
-            print(f"incorrect, {rand} is {morse[ind]}")
+            print(f"incorrect, {rand} is {key}")
         
     else:
         rand = random.choice(letters)
@@ -42,6 +42,7 @@ def rand_letter(switch=False):
             print(f"Incorrect. {key} is {rand}")
 # MAIN
 sw = int(input("Type the number of the desired method:\n[1] Asks for letter \n[2] Asks for the morse\n"))
+print("NOTE: dots are represented by periods (.) and dashes are regular dashes (-)")
 if sw == 1:
     sw = True
 else:
