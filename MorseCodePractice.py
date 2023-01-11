@@ -5,9 +5,9 @@ import random
 morse_table = {}
 letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M", "N","O",
             "P","Q","R","S","T","U","V","W","X","Y","Z"]
-morse = ["AAAAA","AAAAB","AAABA","AAABB","AABAA","AABAB","AABBA","AABBB","ABAAA","ABAAA","ABAAB",
-        "ABABA","ABABB","ABBAA","ABBAB","ABBBA","ABBBB","BAAAA","BAAAB","BAABA","BAABB","BAABB","BABAA",
-        "BABAB","BABBA","BABBB"]
+morse = [".-","-...","-.-.", "-..",".","..-.","--.","....","..",".---",
+        "-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-",
+        "..-","...-",".--","-..-","-.--","--.."]
 #putting the two lists into a dictionary
 for i in range(len(letters)):
     morse_table[letters[i]] = morse[i]
@@ -18,25 +18,27 @@ def rand_letter(switch=False):
     if not switch:
         rand = random.choice(letters)
         ind = letters.index(rand)
-        answer = input(f"{rand}: ")
+        answer = input(f"{rand} :")
+        answer.replace(" ","")
         if answer.upper() == morse[ind]:
             print("Correct")
         elif answer.lower() == "exit":
             running = False
             print()
         else:
-            print(f"incorrect, {rand} is {morse[ind]}")
+            print(f"Incorrect, {rand} is {morse[ind]}")
         
     else:
         rand = random.choice(letters)
         ind = letters.index(rand)
         key = morse[ind]
         answer = input(f"{key}: ")
-
+        answer.replace(" ","")
+        print(answer)
         if answer.upper() == "EXIT":
             running = False
             print()
-        elif rand == answer:
+        elif rand == answer.upper():
             print("Correct")
         elif rand != answer:
             print(f"Incorrect. {key} is {rand}")
