@@ -56,6 +56,7 @@ if sw == 1:
     sw = True
 else:
     sw = False
+print("Type exit to leave the program")
 running = True
 while(running):
     rand_letter(sw)

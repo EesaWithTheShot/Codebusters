@@ -18,9 +18,9 @@ def rand_letter(switch=False):
     if not switch:
         rand = random.choice(letters)
         ind = letters.index(rand)
-        answer = input(f"{rand} :")
-        answer.replace(" ","")
-        if answer.upper() == morse[ind]:
+        answer = input(f"{rand}: ")
+        "".join(answer.split())
+        if answer.replace(" ","") == morse[ind]:
             print("Correct")
         elif answer.lower() == "exit":
             running = False
@@ -32,8 +32,9 @@ def rand_letter(switch=False):
         rand = random.choice(letters)
         ind = letters.index(rand)
         key = morse[ind]
-        answer = input(f"{key}: ")
+        answer = input(f"{key} : ")
         answer.replace(" ","")
+        
         print(answer)
         if answer.upper() == "EXIT":
             running = False
@@ -48,6 +49,7 @@ if sw == 1:
     sw = True
 else:
     sw = False
+print("Type exit to leave the program")
 running = True
 while(running):
     rand_letter(sw)
