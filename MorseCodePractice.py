@@ -5,7 +5,9 @@ import random
 morse_table = {}
 letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M", "N","O",
             "P","Q","R","S","T","U","V","W","X","Y","Z"]
-morse = []
+morse = [".-","-...","-.-.", "-..",".","..-.","--.","....","..",".---",
+        "-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-",
+        "..-","...-",".--","-..-","-.--","--.."]
 #putting the two lists into a dictionary
 for i in range(len(letters)):
     morse_table[letters[i]] = morse[i]
@@ -16,37 +18,38 @@ def rand_letter(switch=False):
     if not switch:
         rand = random.choice(letters)
         ind = letters.index(rand)
-        key = morse[ind]
         answer = input(f"{rand}: ")
-        answer.replace(" ", "")
-        if answer == key:
+        "".join(answer.split())
+        if answer.replace(" ","") == morse[ind]:
             print("Correct")
         elif answer.lower() == "exit":
             running = False
             print()
         else:
-            print(f"incorrect, {rand} is {key}")
+            print(f"Incorrect, {rand} is {morse[ind]}")
         
     else:
         rand = random.choice(letters)
         ind = letters.index(rand)
         key = morse[ind]
-        answer = input(f"{key}: ")
-
+        answer = input(f"{key} : ")
+        answer.replace(" ","")
+        
+        print(answer)
         if answer.upper() == "EXIT":
             running = False
             print()
-        elif rand == answer:
+        elif rand == answer.upper():
             print("Correct")
         elif rand != answer:
             print(f"Incorrect. {key} is {rand}")
 # MAIN
 sw = int(input("Type the number of the desired method:\n[1] Asks for letter \n[2] Asks for the morse\n"))
-print("NOTE: dots are represented by periods (.) and dashes are regular dashes (-)")
 if sw == 1:
     sw = True
 else:
     sw = False
+print("Type exit to leave the program")
 running = True
 while(running):
     rand_letter(sw)
